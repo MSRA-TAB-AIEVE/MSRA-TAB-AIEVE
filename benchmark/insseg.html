@@ -1,0 +1,5868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" name="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ScanNet++, 3D Scene, 3D Dataset, ICCV 2023, nerf, semantic scene understanding">
+    <meta name="description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <!-- Meta og tags -->
+    <meta property="og:title" content="ScanNet++ Dataset">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ScanNet++ Dataset">
+    <meta property="og:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta property="og:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta property="og:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScanNet">
+    <meta name="twitter:creator" content="@ScanNet">
+    <meta name="twitter:title" content="ScanNet++ Dataset">
+    <meta name="twitter:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta name="twitter:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta name="twitter:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+
+    <title>ScanNet++ Dataset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Google+Sans|Noto+Sans|Castoro:400,700" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="../index.html">
+                ScanNet++
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item ">
+                        <a href="../documentation.html" class="nav-link">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="insseg.html#" id="benchmarkDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Benchmark
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="benchmarkDropdown">
+                            <li><a class="dropdown-item" href="docs.html">Submission
+                                    Instructions</a></li>
+                            <li><a class="dropdown-item" href="nvs.html">Novel View Synthesis
+                                    (DSLR)</a>
+                            </li>
+                            <li><a class="dropdown-item" href="semseg.html"> 3D Semantic
+                                    Segmentation</a></li>
+                            <li><a class="dropdown-item" href="insseg.html"> 3D Instance
+                                    Segmentation</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="dashboard.html">
+                                    My Submissions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="../changelog.html" class="nav-link">
+                            Changelog
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../register.html" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <!-- Add message from the server -->
+        
+
+        
+<style>
+.row-cite {
+    font-size: 0.65rem;
+}
+.sortable {
+    text-decoration: none;
+    color: #212529;
+}
+
+.sort-icon::before {
+    vertical-align: middle;
+}
+.sortable:hover {
+    color: #212529;
+}
+
+
+
+
+</style>
+
+
+
+
+
+<h1 class="my-3">3D Instance Segmentation</h1>
+
+This task involves detecting and segmenting the object in an 3D scan mesh,
+which is obtained from the laser scanner point cloud. Submissions must provide a list
+of 3D instances with their semantic labels and predicted confidences, as well as the
+mask indicating the vertices belonging to each instance.
+
+<img src="../static/images/instance_benchmark.jpg" alt="teaser" class="img-fluid">
+
+<h3 class="my-3">Evaluation and Metrics</h3>
+<p>
+    The set of instance classes is a subset of the 100 semantic classes that includes
+    only the object classes that are countable.
+</p>
+
+<p>
+    Predicted labels are evaluated per-vertex over the vertices of
+    5% decimated 3D scan mesh (<i>mesh_aligned_0.05.ply</i>); for 3D approaches that operate on other representations like grids or points,
+    the predicted labels should be mapped onto the mesh vertices.
+</p>
+
+<p>
+    Our evaluation ranks all methods according to the average precision for each class.
+    We report the mean average precision AP at overlap 0.25 (AP 25%), overlap 0.5 (AP 50%),
+    and over overlaps in the range [0.5:0.95:0.05] (AP). Note that multiple predictions of
+    the same ground truth instance are penalized as false positives.
+</p>
+
+<p>
+    Evaluation excludes the vertices which are anonymized. The list of these vertices is in
+    <i>mesh_aligned_0.05_mask.txt</i>
+</p>
+
+<h3 class="my-3">Results</h3>
+<!-- input select box for top1 or top3 -->
+<div style="max-width: 250px;" class="mb-3">
+    <!-- <label for=" topk" class="col-sm-1 col-form-label">Top K</label> -->
+    <select class="form-select" id="inputSelect" onchange="location=this.value">
+        
+        <option value="/scannetpp/benchmark/insseg?sortby=mean&amp;metric=ap" >
+            Metric: AP
+        </option>
+        
+        <option value="/scannetpp/benchmark/insseg?sortby=mean&amp;metric=ap50"  selected >
+            Metric: AP50
+        </option>
+        
+        <option value="/scannetpp/benchmark/insseg?sortby=mean&amp;metric=ap25" >
+            Metric: AP25
+        </option>
+        
+    </select>
+</div>
+<div style="overflow-x: scroll;">
+    <table class="table table-sm text-center">
+        <thead>
+            <tr>
+                <th scope="col" style="min-width: 100px;">Methods</th>
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=mean&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            MEAN
+                            
+                            <i class="bi bi-sort-down sort-icon"></i>
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=backpack&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BACKPACK
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=bag&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BAG
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=basket&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BASKET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=bed&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BED
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=binder&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BINDER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=blanket&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BLANKET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=blinds&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BLINDS
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=book&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BOOK
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=bookshelf&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BOOKSHELF
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=bottle&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BOTTLE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=bowl&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BOWL
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=box&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BOX
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=bucket&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            BUCKET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=cabinet&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CABINET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=ceiling+lamp&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CEILING LAMP
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=chair&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CHAIR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=clock&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CLOCK
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=coat+hanger&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            COAT HANGER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=computer+tower&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            COMPUTER TOWER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=container&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CONTAINER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=crate&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CRATE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=cup&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CUP
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=curtain&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CURTAIN
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=cushion&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CUSHION
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=cutting+board&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            CUTTING BOARD
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=door&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            DOOR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=exhaust+fan&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            EXHAUST FAN
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=file+folder&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            FILE FOLDER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=headphones&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            HEADPHONES
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=heater&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            HEATER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=jacket&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            JACKET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=jar&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            JAR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=kettle&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            KETTLE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=keyboard&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            KEYBOARD
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=kitchen+cabinet&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            KITCHEN CABINET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=laptop&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            LAPTOP
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=light+switch&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            LIGHT SWITCH
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=marker&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            MARKER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=microwave&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            MICROWAVE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=monitor&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            MONITOR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=mouse&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            MOUSE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=office+chair&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            OFFICE CHAIR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=painting&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PAINTING
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=pan&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PAN
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=paper+bag&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PAPER BAG
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=paper+towel&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PAPER TOWEL
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=picture&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PICTURE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=pillow&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PILLOW
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=plant&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PLANT
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=plant+pot&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PLANT POT
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=poster&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            POSTER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=pot&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            POT
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=power+strip&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            POWER STRIP
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=printer&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            PRINTER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=rack&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            RACK
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=refrigerator&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            REFRIGERATOR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=shelf&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SHELF
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=shoe+rack&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SHOE RACK
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=shoes&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SHOES
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=sink&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SINK
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=slippers&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SLIPPERS
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=smoke+detector&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SMOKE DETECTOR
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=soap+dispenser&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SOAP DISPENSER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=socket&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SOCKET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=sofa&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SOFA
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=speaker&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SPEAKER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=spray+bottle&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SPRAY BOTTLE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=stapler&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            STAPLER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=storage+cabinet&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            STORAGE CABINET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=suitcase&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            SUITCASE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=table&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TABLE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=table+lamp&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TABLE LAMP
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=tap&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TAP
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=telephone&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TELEPHONE
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=tissue+box&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TISSUE BOX
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=toilet&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TOILET
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=toilet+brush&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TOILET BRUSH
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=toilet+paper&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TOILET PAPER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=towel&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TOWEL
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=trash+can&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TRASH CAN
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=tv&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            TV
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=whiteboard&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            WHITEBOARD
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=whiteboard+eraser&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            WHITEBOARD ERASER
+                            
+                        </span>
+                    </a>
+                </th>
+                
+                <th scope="col" style=" font-size: 0.5rem;">
+                    <a href="insseg%3Fsortby=window&amp;metric=ap50.html" class="sortable">
+                        <span style="white-space: nowrap;">
+                            WINDOW
+                            
+                        </span>
+                    </a>
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/77.html">SGIFormer</a>
+                </th>
+                
+                    <td><b>0.410</b></td>
+                
+
+                
+                
+
+                
+                    
+                        <td>0.529</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.156</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.553</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.419</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.708</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.020</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.543</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.246</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.125</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.231</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.324</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.580</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.780</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.865</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.381</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.166</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.544</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.002</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.472</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.640</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.028</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.869</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.481</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.200</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.845</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.253</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.577</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.858</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.221</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.712</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.408</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.899</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.886</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.822</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.912</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.002</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.175</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.049</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.325</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.777</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.369</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.009</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.265</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.238</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.200</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.862</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.207</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.166</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.259</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>1.000</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.064</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.865</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.666</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.111</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.965</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.010</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.033</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.559</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.314</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.645</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.541</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.842</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.785</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.142</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.909</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.938</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.138</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.210</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.607</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.960</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.943</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.548</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.502</b></td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        Lei Yao, Yi Wang, Moyun Liu, Lap-Pui Chau.
+                        
+                            <a href="https://arxiv.org/pdf/2407.11564" target="_blank">
+                                SGIFormer: Semantic-guided and Geometric-enhanced Interleaving Transformer for 3D Instance Segmentation.
+                            </a>
+                            
+                        Under Review
+                    
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/51.html">BFL</a>
+                </th>
+                
+                    <td>0.328</td>
+                
+
+                
+                
+
+                
+                    
+                        <td>0.473</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.064</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.387</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.194</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.684</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.047</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.480</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.213</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.008</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.226</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.121</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.465</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.815</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.843</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.666</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.273</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.533</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.040</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.475</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.326</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.081</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.002</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.782</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.389</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.036</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.803</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.431</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.011</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.020</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.785</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.284</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.497</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.020</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.410</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.859</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.477</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.900</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.019</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.005</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.142</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.001</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.159</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.593</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.664</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.142</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.065</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.102</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.226</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.060</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.073</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.187</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.146</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.694</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.156</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.753</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.608</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.182</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.888</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.007</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.001</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.033</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.354</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.176</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.506</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.500</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.298</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.518</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.035</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.828</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.435</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.302</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.193</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.735</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.921</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.950</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.612</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.184</td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        Jiahao Lu, Jiacheng Deng, Tianzhu Zhang.
+                        
+                            Beyond the Final Layer: Hierarchical Query Fusion Transformer with Agent-Interpolation Initialization for 3D Instance Segmentation.
+                        
+                        Under Review
+                    
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/83.html">MAFT</a>
+                </th>
+                
+                    <td>0.319</td>
+                
+
+                
+                
+
+                
+                    
+                        <td>0.263</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.125</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.001</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.459</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.267</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.738</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.044</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.519</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.139</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.133</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.139</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.443</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.780</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.777</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.765</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.316</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.390</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.074</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.443</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.653</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.117</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.033</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.725</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.379</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.756</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.393</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.049</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.760</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.320</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.088</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.010</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.647</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.867</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.458</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.937</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.022</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.142</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.085</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.436</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.721</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.245</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.060</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.088</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.142</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.121</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.305</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.041</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.137</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.669</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.140</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.755</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.606</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.116</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.988</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.189</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.458</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.307</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.434</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.253</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.366</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.461</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.119</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.710</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.326</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.050</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.161</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.699</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.988</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.815</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.441</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.185</td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        .
+                        
+                            Mask-Attention-Free Transformer for 3D Instance Segmentation.
+                        
+                        
+                    
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/31.html">SoftGroup</a>
+                </th>
+                
+                    <td>0.297</td>
+                
+
+                
+                
+
+                
+                    
+                        <td><b>0.629</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.068</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.280</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.532</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.493</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.030</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.447</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.148</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.031</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.133</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.071</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.383</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.736</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.798</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.500</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.313</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.001</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.013</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.360</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.623</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.021</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.644</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.070</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.756</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.207</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.166</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.734</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.053</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.364</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.022</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.816</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.590</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.758</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.940</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.015</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.002</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.197</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.265</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.777</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.337</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.104</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.095</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.152</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.189</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.823</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.097</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.803</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.666</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.292</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.888</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.001</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.001</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.454</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.427</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.251</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.283</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.433</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.368</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.119</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.808</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.755</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.130</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.066</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.516</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.813</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.911</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.177</td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        Thang Vu, Kookhoi Kim, Tung M. Luu, Xuan Thanh Nguyen, Chang D. Yoo.
+                        
+                            <a href="https://arxiv.org/abs/2203.01509" target="_blank">
+                                Softgroup for 3d instance segmentation on point clouds.
+                            </a>
+                            
+                        CVPR 2022
+                    
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/76.html">Open3DIS - only2D</a>
+                </th>
+                
+                    <td>0.204</td>
+                
+
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.285</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.220</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.116</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.141</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.145</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.133</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.158</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.078</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.036</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.277</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.310</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.763</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.101</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.128</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.038</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.313</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.103</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.476</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.133</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.446</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.036</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.600</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.108</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.035</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.010</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.250</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.638</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.033</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.505</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.390</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.510</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.325</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.446</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.046</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.155</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.155</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.492</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.168</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.072</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.021</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.206</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.488</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.344</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.252</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.034</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.472</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.046</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.117</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.074</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.119</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.364</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.074</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.381</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.364</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.288</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.112</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.275</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.368</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.654</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.549</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.107</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.238</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.239</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.480</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.372</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.434</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.277</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.047</td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        Phuc Nguyen, Tuan Duc Ngo, Evangelos Kalogerakis, Chuang Gan, Anh Tran, Cuong Pham, Khoi Nguyen.
+                        
+                            <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Nguyen_Open3DIS_Open-Vocabulary_3D_Instance_Segmentation_with_2D_Mask_Guidance_CVPR_2024_paper.pdf" target="_blank">
+                                Open3DIS: Open-vocabulary 3D Instance Segmentation with 2D Mask Guidance.
+                            </a>
+                            
+                        CVPR 2024
+                    
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/32.html">HAIS</a>
+                </th>
+                
+                    <td>0.199</td>
+                
+
+                
+                
+
+                
+                    
+                        <td>0.209</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.095</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.104</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.407</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.029</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.425</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.074</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.066</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.312</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.712</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.791</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.333</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.416</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.273</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.430</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.514</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.778</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.106</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.364</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.294</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.090</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.213</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.635</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.548</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.949</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.339</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.403</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.375</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.013</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.170</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.861</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td><b>0.882</b></td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.056</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.666</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.165</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.230</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.242</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.217</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.644</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.080</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.376</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.777</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.902</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.178</td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        Shaoyu Chen, Jiemin Fang, Qian Zhang, Wenyu Liu, Xinggang Wang.
+                        
+                            <a href="https://arxiv.org/abs/2108.02350" target="_blank">
+                                Hierarchical aggregation for 3d instance segmentation.
+                            </a>
+                            
+                        ICCV 2021
+                    
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">
+                    <a style="text-decoration: solid;" href="submission/view/33.html">PointGroup</a>
+                </th>
+                
+                    <td>0.146</td>
+                
+
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.137</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.626</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.012</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.480</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.021</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.029</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.222</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.721</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.790</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.288</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.279</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.334</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.460</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.722</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.179</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.225</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.033</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.031</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.566</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.490</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.906</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.366</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.389</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.203</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.733</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.535</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.320</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.196</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.035</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.494</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.503</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.857</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.000</td>
+                    
+                
+                
+                
+
+                
+                    
+                        <td>0.134</td>
+                    
+                
+                
+            </tr>
+            <tr class="row-cite text-start">
+                <td colspan="85">
+                    
+                        Li Jiang, Hengshuang Zhao, Shaoshuai Shi, Shu Liu, Chi-Wing Fu, Jiaya Jia.
+                        
+                            <a href="https://arxiv.org/abs/2004.01658" target="_blank">
+                                Pointgroup: Dual-set point grouping for 3d instance segmentation.
+                            </a>
+                            
+                        CVPR 2020
+                    
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<p> Please refer to the <a href="docs.html">submission instructions</a> before making a
+    submission</p>
+<a class="btn btn-primary my-3" href="dashboard.html">Submit results</a>
+
+
+
+    </div>
+</body>
+
+</html>

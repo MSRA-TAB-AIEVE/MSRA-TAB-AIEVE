@@ -1,0 +1,18 @@
+body {
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-family: 'Open Sans', sans-serif;
+}
+a {
+  text-decoration: solid;
+}
+
+.highlight {
+  background-color: #f8f9fa;
+  border-radius: 0.50rem;
+}
+
+.inline-highlight {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}

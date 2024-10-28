@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" name="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ScanNet++, 3D Scene, 3D Dataset, ICCV 2023, nerf, semantic scene understanding">
+    <meta name="description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <!-- Meta og tags -->
+    <meta property="og:title" content="ScanNet++ Dataset">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ScanNet++ Dataset">
+    <meta property="og:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta property="og:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta property="og:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScanNet">
+    <meta name="twitter:creator" content="@ScanNet">
+    <meta name="twitter:title" content="ScanNet++ Dataset">
+    <meta name="twitter:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta name="twitter:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta name="twitter:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+
+    <title>ScanNet++ Dataset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Google+Sans|Noto+Sans|Castoro:400,700" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="../index.html">
+                ScanNet++
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item ">
+                        <a href="../documentation.html" class="nav-link">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="dashboard.html#" id="benchmarkDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Benchmark
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="benchmarkDropdown">
+                            <li><a class="dropdown-item" href="docs.html">Submission
+                                    Instructions</a></li>
+                            <li><a class="dropdown-item" href="nvs.html">Novel View Synthesis
+                                    (DSLR)</a>
+                            </li>
+                            <li><a class="dropdown-item" href="semseg.html"> 3D Semantic
+                                    Segmentation</a></li>
+                            <li><a class="dropdown-item" href="insseg.html"> 3D Instance
+                                    Segmentation</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="dashboard.html">
+                                    My Submissions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="../changelog.html" class="nav-link">
+                            Changelog
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../register.html" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <!-- Add message from the server -->
+        
+        
+        
+        <div class="alert alert-danger" role="alert">
+            Please login first
+        </div>
+        
+        
+        <!-- <div class="alert alert-danger" role="alert"> -->
+        
+
+        
+
+<h1 class="my-3">Login</h1>
+<form method="POST" action="dashboard.html">
+
+    
+<div class="mb-3">
+    
+    <label class="form-label" for="inputEmail">Email</label>
+        
+    
+    <input class="form-control" id="inputEmail" name="email" required type="email" value="">
+    
+    
+</div>
+
+    
+<div class="mb-3">
+    
+    <label class="form-label" for="inputPassword">Password</label>
+        
+    
+    <input class="form-control" id="inputPassword" name="password" required type="password" value="">
+    
+    
+</div>
+
+
+    <div class="mb-3">
+        <a href="../register.html">Register</a>
+
+        <a class="mx-3" href="../forget_password.html">Forget Password</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+    </div>
+</body>
+
+</html>

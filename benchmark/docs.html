@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" name="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ScanNet++, 3D Scene, 3D Dataset, ICCV 2023, nerf, semantic scene understanding">
+    <meta name="description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <!-- Meta og tags -->
+    <meta property="og:title" content="ScanNet++ Dataset">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ScanNet++ Dataset">
+    <meta property="og:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta property="og:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta property="og:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScanNet">
+    <meta name="twitter:creator" content="@ScanNet">
+    <meta name="twitter:title" content="ScanNet++ Dataset">
+    <meta name="twitter:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta name="twitter:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta name="twitter:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+
+    <title>ScanNet++ Dataset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Google+Sans|Noto+Sans|Castoro:400,700" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="../index.html">
+                ScanNet++
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item ">
+                        <a href="../documentation.html" class="nav-link">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="docs.html#" id="benchmarkDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Benchmark
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="benchmarkDropdown">
+                            <li><a class="dropdown-item" href="docs.html">Submission
+                                    Instructions</a></li>
+                            <li><a class="dropdown-item" href="nvs.html">Novel View Synthesis
+                                    (DSLR)</a>
+                            </li>
+                            <li><a class="dropdown-item" href="semseg.html"> 3D Semantic
+                                    Segmentation</a></li>
+                            <li><a class="dropdown-item" href="insseg.html"> 3D Instance
+                                    Segmentation</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="dashboard.html">
+                                    My Submissions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="../changelog.html" class="nav-link">
+                            Changelog
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../register.html" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <!-- Add message from the server -->
+        
+
+        
+<style>
+.row-cite {
+    font-size: 0.65rem;
+}
+.sortable {
+    text-decoration: none;
+    color: #212529;
+}
+
+.sort-icon::before {
+    vertical-align: middle;
+}
+.sortable:hover {
+    color: #212529;
+}
+
+
+
+
+</style>
+
+
+
+
+<h2 class="my-3">Submission Policy</h2>
+<p><span style="color:rgb(255, 98, 0);">The benchmark is currently evaluated on the <b>v1 (Nov 23, 2023)</b> version of the dataset.</span></p>
+<p>The ScanNet++ training and validation sets are provided for training models and optimizing model parameters.
+    Benchmark results are evaluated on the hidden test sets, which are not publicly available. Users
+    must not attempt to optimize results on the hidden test set through repeated submissions or
+    to access test set data in any way.
+</p>
+<p>A user may create upto <b>4</b> submissions for each task. Creating multiple accounts to
+    bypass this limit is prohibited, and will cause the user to get banned from the submission system.</p>
+<p>The interval between two submissions must be at least <b>24 hours</b>. It may take upto
+    24 hours after a valid submission for the results to appear on the public
+    leaderboard.
+</p>
+<p>Before submission, users are encouraged to use the
+    <a href="https://github.com/scannetpp/scannetpp">public evaluation scripts</a> on the validation set to make sure
+    their submissions are in the correct format. Failed submissions due to incorrect
+    formats will count towards a user's submission quota.
+</p>
+<p>
+    The hidden test sets (and hence the submission system) <b>must not be used for ablation studies</b>.
+    Ablation studies must be reported on the ScanNet++ <b>validation set</b>. Once the algorithm and its parameters are
+    finalized
+    on the validation set, the user may create a <b>single submission</b> through the submission system.
+</p>
+
+<h2 class="my-3">Submission Instructions</h2>
+
+<div class="m-2">
+    <h3 class="my-2">Novel View Synthesis on DSLR Images</h3>
+    <p>A submission must include algorithm-generated images (supported formats/extensions: JPG, jpg, jpeg, png) for each filename
+        in the <b>"test"</b> field of <i>train_test_lists.json</i> or in the <b>"test_frames"</b> field of
+        <i>nerfstudio/transforms.json</i> using the given camera poses.
+        All the images from a single scene should be in a directory named <b>&lt;scene_id&gt;</b>, and all such
+        directories
+        should be in a single <b>.zip</b> file. The filenames must <b>exactly</b> match the ones in
+        <i>train_test_lists.json</i>.
+    </p>
+    <p>
+        Generated images must preferably be in the resolution specified by the camera intrinsics. If this is not the
+        case,
+        they will be resized to the correct resolution before evaluation. For more details of evaluation see
+        the <a href="nvs.html">novel view synthesis page</a>.
+    </p>
+    <p>
+        The NVS benchmark has 2 tracks: <b>fisheye</b> and <b>undistorted</b>. 
+        In the <b>fisheye</b> track, original fisheye DSLR images are used as GT
+        and results must be generated with the fisheye camera 
+        intrinsics, while in the <b>undistorted</b> track, undistorted DSLR images are used as GT
+        and results must be submitted as undistorted images.
+    </p>
+    <p>
+        Undistorted images can be obtained by using the
+        <a href="https://github.com/scannetpp/scannetpp" target="_blank">ScanNet++ Toolbox</a>, which
+        gives undistorted camera intrinsics and undistorted images while the camera poses (extrinsics) remain the same.
+    </p>
+    <p>
+        The <b>.zip</b> file should be uploaded to the submission system.
+        A submission could look like this (scene IDs and filenames are for illustration purposes only):
+    </p>
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+unzip_root/
+    |-- 56a0ec536c
+        |-- DSC01752.JPG
+        |-- DSC01753.JPG
+            ⋮
+    |-- 8b5caf3398
+        |-- DSC00299.JPG
+        |-- DSC00143.JPG
+            ⋮
+    |-- 98b4ec142f
+        ⋮
+    </code></pre>
+    </div>
+    <span class="text-danger">Important:</span> Unzipping the submission .zip file <b>must not</b> create the unzip_root
+    directory, and must create <b>only the &lt;scene_id&gt; directories</b> directly. The maximum upload size is 2GB.
+</div>
+
+
+<div class="m-2">
+    <h3 class="my-2">3D Semantic Segmentation</h3>
+    <p>
+        The 3D semantic segmentation task is evaluated on the top 100 semantic classes. Semantic label predictions
+        must be provided for each vertex of the mesh. See the <a href="semseg.html">3D semantic
+            segmentation page</a> for more details.
+    </p>
+    <p>
+        A submission must contain one <b>.txt</b> file for each test scene, named <b>&lt;scene_id&gt;.txt</b>.
+        This file must contain 0-indexed semantic label predictions for each vertex of the mesh
+        according to the labels in <b>top100.txt</b>, separated by a newline. A file could look like this:
+    </p>
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+7
+7
+36
+89
+⋮
+55
+        </pre></code>
+    </div>
+
+    <p>
+        All such files must be in a single <b>.zip</b> file and uploaded to the submission system,
+        which when unzipped has the following structure (scene IDs are for illustration purposes only):
+    </p>
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+unzip_root/
+    |-- 56a0ec536c.txt
+    |-- 8b5caf3398.txt
+    |-- 41b00feddb.txt
+        ⋮
+    |-- 98b4ec142f.txt
+        </pre></code>
+    </div>
+    <p>
+        <span class="text-danger">Important:</span> Unzipping the submission .zip file
+        <b>must not</b> create the unzip_root directory, and must create <b>only the .txt files</b> directly.
+    </p>
+</div>
+
+<div class="m-2">
+    <h3 class="my-2">3D Instance Segmentation</h3>
+    <p>
+        The 3D instance segmentation task is evaluated on a subset of the 100 semantic classes given in
+        <b>top100_instance.txt</b>.
+        A submission must
+        contain the list of predicted 3D instances and their RLE-encoded (run-length encoded) vertex masks for each test scene.
+        See the <a href="insseg.html">3D instance segmentation page</a> for more details.
+    </p>
+
+    <p>
+        Results must be provided as a text file for each test scan. Each text file
+        should contain a line for each instance, containing the relative path to an RLE-encoding of the instance mask
+        in a JSON file, the predicted label id, and the confidence of the prediction.
+    </p>
+    <p>
+
+        The result text files must be named according to the corresponding test scene,
+        as <b>&lt;scene_id&gt;.txt</b>. Predicted .txt files listing the instances of
+        each scan are in the root of the unzipped submission.
+        Predicted instance RLE-mask JSON files must be in a subdirectory of the unzipped
+        submission.
+    </p>
+    <p>
+        For instance, a submission could look like (scene IDs are for illustration purposes only):
+    </p>
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+unzip_root/
+    |-- 56a0ec536c.txt
+    |-- 8b5caf3398.txt
+    |-- 41b00feddb.txt
+        ⋮
+    |-- 98b4ec142f.txt
+    |-- predicted_masks/
+        |-- 56a0ec536c_000.json
+        |-- 56a0ec536c_001.json
+        |-- 8b5caf3398_001.json
+            ⋮
+        |-- 98b4ec142f_035.json
+        </pre></code>
+    </div>
+    <p>
+        <span class="text-danger">Important:</span> Unzipping the submission .zip file <b>must not</b> create the unzip_root directory,
+        and must create <b>only the .txt files</b> directly.
+    </p>
+    <p>
+        Each prediction file for a scan must contain one line per predicted instance, with the following space-separated fields:
+        (1) the relative path to the predicted RLE-mask file, (2) the integer class label id,
+        (3) the float confidence score.
+        Thus, the filenames in the prediction files must not contain spaces.
+        For example, <i>56a0ec536c.txt</i> could look like this::
+    </p>
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+predicted_masks/56a0ec536c_000.json 29 0.489
+predicted_masks/56a0ec536c_001.json 92 0.965
+⋮
+        </pre></code>
+    </div>
+    <p>
+        The predicted instance mask JSON file is an RLE encoding of the mask over the vertices of the scan mesh.
+        See the <a href="https://github.com/scannetpp/scannetpp/blob/5b8c07183748f75ad1d0f6c7d14cede940956b14/semantic/prep/prepare_semantic_gt.py#L158">
+        semantic GT preparation script</a> for an example of how to create the JSON file.
+        The <i>length</i> field of the JSON contains the number of vertices in the mask,
+        and the <i>counts</i> field contains the RLE encoding of the mask as pairs of <i>start</i> and <i>length</i> values.
+        <i>start</i> is the 1-indexed position of a contiguous group of vertices in the mesh, and <i>length</i> is the number of vertices in the group.
+    </p>
+    For example, <i>predicted_masks/56a0ec536c_000.json</i> with RLE encoding of the binary mask
+    <i>[0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]</i> could look like this:
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+{
+    'length': 12,
+    'counts': '4 3 10 3'
+}
+        </pre></code>
+    </div>
+</div>
+
+<h2 class="my-3">Common FAQ</h2>
+<div class="m-2">
+    <h3 class="my-2">1. Do I have to use zip?</h3>
+    <p>We support <b>.zip</b>, <b>.tar.gz</b>, and <b>.7z</b>.</p>
+
+
+    <h3 class="my-2">2. How to compress the files without the parent directory?</h3>
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+cd YOUR_PRED_FOLDER; zip -r ../upload.zip .; cd ..
+        </pre></code>
+    </div>
+    or with gzip
+    <div class="highlight px-3 mb-2">
+        <pre><code>
+cd YOUR_PRED_FOLDER; tar -czfv upload.tar.gz *; cd ..
+        </pre></code>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+
+</html>

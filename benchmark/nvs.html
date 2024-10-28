@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" name="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ScanNet++, 3D Scene, 3D Dataset, ICCV 2023, nerf, semantic scene understanding">
+    <meta name="description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <!-- Meta og tags -->
+    <meta property="og:title" content="ScanNet++ Dataset">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ScanNet++ Dataset">
+    <meta property="og:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta property="og:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta property="og:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScanNet">
+    <meta name="twitter:creator" content="@ScanNet">
+    <meta name="twitter:title" content="ScanNet++ Dataset">
+    <meta name="twitter:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta name="twitter:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta name="twitter:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+
+    <title>ScanNet++ Dataset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Google+Sans|Noto+Sans|Castoro:400,700" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="../index.html">
+                ScanNet++
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item ">
+                        <a href="../documentation.html" class="nav-link">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="nvs.html#" id="benchmarkDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Benchmark
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="benchmarkDropdown">
+                            <li><a class="dropdown-item" href="docs.html">Submission
+                                    Instructions</a></li>
+                            <li><a class="dropdown-item" href="nvs.html">Novel View Synthesis
+                                    (DSLR)</a>
+                            </li>
+                            <li><a class="dropdown-item" href="semseg.html"> 3D Semantic
+                                    Segmentation</a></li>
+                            <li><a class="dropdown-item" href="insseg.html"> 3D Instance
+                                    Segmentation</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="dashboard.html">
+                                    My Submissions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="../changelog.html" class="nav-link">
+                            Changelog
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../register.html" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <!-- Add message from the server -->
+        
+
+        
+<style>
+.row-cite {
+    font-size: 0.65rem;
+}
+.sortable {
+    text-decoration: none;
+    color: #212529;
+}
+
+.sort-icon::before {
+    vertical-align: middle;
+}
+.sortable:hover {
+    color: #212529;
+}
+
+
+
+
+</style>
+
+
+
+
+
+<h1 class="my-3">Novel View Synthesis on DSLR Images</h1>
+<p>
+    The novel view synthesis task is to render images from novel viewpoints given a dense RGB capture of the scene.
+    The images are captured by a fisheye DSLR camera, and camera poses from COLMAP are provided for every training and
+    test image.
+</p>
+<p>
+    We also provide the undistorted evaluation track: rendering undistorted perspective (pinhole) images of the given
+    poses.
+    The training images and the GT are generated from the raw fisheye images using the
+    <a href="https://github.com/scannetpp/scannetpp" target="_blank">ScanNet++ Toolbox</a>.
+</p>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <img class="img-fluid" src="../static/images/nvs_task.jpg"
+            alt="Novel view synthesis" />
+    </div>
+</div>
+
+
+<h3 class="my-3">Evaluation and Metrics</h3>
+<p>
+    We evaluate the similarity beween the ground truth and generated RGB images.
+    Our evaluation metrics are peak signal-to-noise ratio (<b>PSNR</b>),
+    structural similarity index measure (<b>SSIM</b>),
+    and learned perceptual image patch similarity (<b>LPIPS</b>).
+    For each pair of generated and ground-truth images, we compute these three metrics,
+    and the numbers reported in the
+    table are the average over all the images across all the scenes.
+</p>
+<p>
+    Evaluation is carried out on GT images with resolution 1752 x 1168.
+    Submitted images will be automatically resized if their resolutions differ from this.
+</p>
+<p>
+    Evaluation excludes the pixels which are anonymized. Anonymized pixels are specified in
+    <i>resized_anon_masks</i> and <i>original_anon_masks</i>.
+</p>
+
+<h3 class="my-3">Results</h3>
+
+<div style="max-width: 250px;" class="mb-3">
+    <!-- <label for=" topk" class="col-sm-1 col-form-label">Top K</label> -->
+    <select class="form-select" id="inputSelect" onchange="location=this.value">
+        <option value="/scannetpp/benchmark/nvs?sortby=psnr&amp;type=fisheye" >
+            Track: Fisheye</option>
+        <option value="/scannetpp/benchmark/nvs?sortby=psnr&amp;type=undistort" 
+            selected >
+            Track: Undistorted</option>
+    </select>
+</div>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Methods</th>
+            <th scope="col" style="width: 20%">
+                <a href="nvs%3Fsortby=psnr&amp;type=undistort.html" class="sortable">
+                    PSNR
+                    
+                    <i class="bi bi-sort-down sort-icon"></i>
+                    
+                </a>
+            </th>
+            <th scope="col" style="width: 20%">
+                <a href="nvs%3Fsortby=ssim&amp;type=undistort.html" class="sortable">
+                    SSIM
+                    
+                    <i class="bi bi-filter sort-icon"></i>
+                    
+                </a>
+            </th>
+            <th scope="col" style="width: 20%">
+                <a href="nvs%3Fsortby=lpips&amp;type=undistort.html" class="sortable">
+                    LPIPS
+                    
+                    <i class="bi bi-filter sort-icon"></i>
+                    
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/82.html">Zip-NeRF</a>
+            </th>
+            </th>
+            <td>
+                
+                <b>
+                25.007
+                </b>
+                
+            </td>
+            <td>
+                
+                <b>
+                0.879
+                </b>
+                
+            </td>
+            <td>
+                
+                0.326
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Jonathan T. Barron, Ben Mildenhall, Dor Verbin, Pratul P. Srinivasan, Peter Hedman.
+                    
+                        <a href="https://arxiv.org/abs/2304.06706" target="_blank">
+                            Zip-NeRF: Anti-Aliased Grid-Based Neural Radiance Fields.
+                        </a>
+                        
+                    ICCV 2023
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/47.html">RPBG</a>
+            </th>
+            </th>
+            <td>
+                
+                24.355
+                
+            </td>
+            <td>
+                
+                0.873
+                
+            </td>
+            <td>
+                
+                <b>
+                0.280
+                </b>
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Zizhuang Wei, Qingtian Zhu, et al.
+                    
+                        <a href="https://arxiv.org/abs/2405.05663" target="_blank">
+                            RPBG: Towards Robust Neural Point-based Graphics in the Wild.
+                        </a>
+                        
+                    ECCV 2024
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/65.html">FeatSplat</a>
+            </th>
+            </th>
+            <td>
+                
+                24.247
+                
+            </td>
+            <td>
+                
+                0.869
+                
+            </td>
+            <td>
+                
+                0.314
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Tomas Berriel Martins, Javier Civera.
+                    
+                        <a href="https://arxiv.org/pdf/2405.15518" target="_blank">
+                            Feature Splatting for Better Novel View Synthesis with Low Overlap.
+                        </a>
+                        
+                    BMVC 2024
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/37.html">Nerfacto</a>
+            </th>
+            </th>
+            <td>
+                
+                24.049
+                
+            </td>
+            <td>
+                
+                0.861
+                
+            </td>
+            <td>
+                
+                0.342
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Matthew Tancik, Ethan Weber, Evonne Ng, Ruilong Li, Brent Yi, Justin Kerr, Terrance Wang, Alexander Kristoffersen, Jake Austin, Kamyar Salahi, Abhik Ahuja, David McAllister, Angjoo Kanazawa.
+                    
+                        <a href="https://arxiv.org/abs/2302.04264" target="_blank">
+                            Nerfstudio: A Modular Framework for Neural Radiance Field Development.
+                        </a>
+                        
+                    SIGGRAPH 2023
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/71.html">TensoRF</a>
+            </th>
+            </th>
+            <td>
+                
+                23.978
+                
+            </td>
+            <td>
+                
+                0.849
+                
+            </td>
+            <td>
+                
+                0.407
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, Hao Su.
+                    
+                        <a href="https://arxiv.org/abs/2203.09517" target="_blank">
+                            TensoRF: Tensorial Radiance Fields.
+                        </a>
+                        
+                    ECCV 2022
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/36.html">Gaussian Splatting</a>
+            </th>
+            </th>
+            <td>
+                
+                23.891
+                
+            </td>
+            <td>
+                
+                0.871
+                
+            </td>
+            <td>
+                
+                0.319
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler, George Drettakis.
+                    
+                        <a href="https://arxiv.org/abs/2308.04079" target="_blank">
+                            3D Gaussian Splatting for Real-Time Radiance Field Rendering.
+                        </a>
+                        
+                    SIGGRAPH 2023
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/38.html">Instant-NGP</a>
+            </th>
+            </th>
+            <td>
+                
+                23.812
+                
+            </td>
+            <td>
+                
+                0.859
+                
+            </td>
+            <td>
+                
+                0.375
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Thomas Müller, Alex Evans, Christoph Schied, Alexander Keller.
+                    
+                        <a href="https://arxiv.org/abs/2201.05989" target="_blank">
+                            Instant Neural Graphics Primitives with a Multiresolution Hash Encoding.
+                        </a>
+                        
+                    SIGGRAPH 2022
+                
+            </td>
+        </tr>
+        
+        <tr>
+
+            <th scope="row">
+                <a style="text-decoration: solid;"
+                    href="submission/view/53.html">Plenoxels</a>
+            </th>
+            </th>
+            <td>
+                
+                22.549
+                
+            </td>
+            <td>
+                
+                0.836
+                
+            </td>
+            <td>
+                
+                0.407
+                
+            </td>
+        </tr>
+        <tr class="row-cite text-start">
+            <td colspan="4">
+                
+                    Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong Chen, Benjamin Recht, Angjoo Kanazawa.
+                    
+                        <a href="https://arxiv.org/abs/2112.05131" target="_blank">
+                            Plenoxels: Radiance Fields without Neural Networks.
+                        </a>
+                        
+                    CVPR 2022
+                
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
+<p> Please refer to the <a href="docs.html">submission instructions</a> before making a
+    submission</p>
+<a class="btn btn-primary my-3" href="dashboard.html">Submit results</a>
+
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" name="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ScanNet++, 3D Scene, 3D Dataset, ICCV 2023, nerf, semantic scene understanding">
+    <meta name="description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <!-- Meta og tags -->
+    <meta property="og:title" content="ScanNet++ Dataset">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ScanNet++ Dataset">
+    <meta property="og:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta property="og:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta property="og:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScanNet">
+    <meta name="twitter:creator" content="@ScanNet">
+    <meta name="twitter:title" content="ScanNet++ Dataset">
+    <meta name="twitter:description"
+        content="ScanNet++ is a large-scale, high-fidelity dataset of 3D indoor scenes containing sub-millimeter resolution laser scans, registered 33-megapixel DSLR images, and commodity RGB-D streams from iPhone. The 3D reconstructions are annotated with long-tail and label-ambiguous semantics to benchmark semantic understanding methods, while the coupled DSLR and iPhone captures enable benchmarking of novel view synthesis methods in high-quality and commodity settings.">
+    <meta name="twitter:image"
+        content="https://kaldir.vc.in.tum.de/scannetpp/static/images/spp-thumbnail.jpg">
+    <meta name="twitter:url" content="https://kaldir.vc.in.tum.de/scannetpp/">
+
+    <title>ScanNet++ Dataset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Google+Sans|Noto+Sans|Castoro:400,700" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../../static/css/index.css">
+    <link rel="icon" href="../../../static/images/favicon.ico">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="../../../index.html">
+                ScanNet++
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item ">
+                        <a href="../../../documentation.html" class="nav-link">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="87.html#" id="benchmarkDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Benchmark
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="benchmarkDropdown">
+                            <li><a class="dropdown-item" href="../../docs.html">Submission
+                                    Instructions</a></li>
+                            <li><a class="dropdown-item" href="../../nvs.html">Novel View Synthesis
+                                    (DSLR)</a>
+                            </li>
+                            <li><a class="dropdown-item" href="../../semseg.html"> 3D Semantic
+                                    Segmentation</a></li>
+                            <li><a class="dropdown-item" href="../../insseg.html"> 3D Instance
+                                    Segmentation</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../../dashboard.html">
+                                    My Submissions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="../../../changelog.html" class="nav-link">
+                            Changelog
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="../../../contact.html" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="../../dashboard.html" class="nav-link">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../../register.html" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <!-- Add message from the server -->
+        
+
+        
+<style>
+.row-cite {
+    font-size: 0.65rem;
+}
+.sortable {
+    text-decoration: none;
+    color: #212529;
+}
+
+.sort-icon::before {
+    vertical-align: middle;
+}
+.sortable:hover {
+    color: #212529;
+}
+
+
+
+
+</style>
+
+
+
+<!-- Show a table that contains the NVSResult info -->
+<h1 class="my-3">Results for OA-CNNs-Small</h1>
+
+<h2 class="my-3">Submission info</h2>
+<div>
+    <table class="table">
+        <thead class="table-dark">
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Full name</th>
+                <td>OA-CNNs: Omni-Adaptive Sparse CNNs for 3D Semantic Segmentation</td>
+            </tr>
+            <tr>
+                <th scope="row">Publication title</th>
+                <td>OA-CNNs: Omni-Adaptive Sparse CNNs for 3D Semantic Segmentation</td>
+            </tr>
+            <tr>
+                <th scope="row">Publication authors</th>
+                <td>Bohao Peng, Xiaoyang Wu, Li Jiang, Yukang Chen, Hengshuang Zhao, Zhuotao Tian, Jiaya Jia</td>
+            </tr>
+            <tr>
+                <th scope="row">Publication venue</th>
+                <td>Journal of Intelligent &amp; Fuzzy Systems, Volume 43, Issue 5</td>
+            </tr>
+            <tr>
+                <th scope="row">Publication url</th>
+                <td><a href="https://arxiv.org/abs/2403.14418" target="_blank">https://arxiv.org/abs/2403.14418</a></td>
+            </tr>
+            <tr>
+                <th scope="row">Project link</th>
+                <td><a href="https://github.com/Pointcept/Pointcept" target="_blank">https://github.com/Pointcept/Pointcept</a></td>
+            </tr>
+            
+            <tr>
+                <th scope="row">Hardware</th>
+                <td>1x RTX 3080 (10gb)</td>
+            </tr>
+            
+            
+            <tr>
+                <th scope="row">Code</th>
+                <td>Code available with license:
+                    
+                    MIT
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <th scope="row">Use other data</th>
+                
+                <td>No</td>
+                
+            </tr>
+            <tr>
+                <th scope="row">Last edited</th>
+                <td>20 August, 2024</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+<h2 class="my-3">Method details</h2>
+<ul>
+    <li>Use DSLR RGB: 
+
+<span class="text-secondary">No</span>
+
+</li>
+    <li>Use iPhone RGB-D: 
+
+<span class="text-secondary">No</span>
+
+</li>
+    <li>Use mesh geometry: 
+
+<span class="text-secondary">No</span>
+
+</li>
+    <li>Use high-resolution pointcloud: 
+
+<span class="text-secondary">No</span>
+
+</li>
+</ul>
+
+<h2 class="my-3">3D semantic segmentation results </h2>
+<div class="container-fluid" style="overflow-x: scroll;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="row"></th>
+                <th scope="row">mIoU</th>
+                
+                <th>wall</td>
+                    
+                <th>ceiling</td>
+                    
+                <th>floor</td>
+                    
+                <th>table</td>
+                    
+                <th>door</td>
+                    
+                <th>ceiling lamp</td>
+                    
+                <th>cabinet</td>
+                    
+                <th>blinds</td>
+                    
+                <th>curtain</td>
+                    
+                <th>chair</td>
+                    
+                <th>storage cabinet</td>
+                    
+                <th>office chair</td>
+                    
+                <th>bookshelf</td>
+                    
+                <th>whiteboard</td>
+                    
+                <th>window</td>
+                    
+                <th>box</td>
+                    
+                <th>window frame</td>
+                    
+                <th>monitor</td>
+                    
+                <th>shelf</td>
+                    
+                <th>doorframe</td>
+                    
+                <th>pipe</td>
+                    
+                <th>heater</td>
+                    
+                <th>kitchen cabinet</td>
+                    
+                <th>sofa</td>
+                    
+                <th>windowsill</td>
+                    
+                <th>bed</td>
+                    
+                <th>shower wall</td>
+                    
+                <th>trash can</td>
+                    
+                <th>book</td>
+                    
+                <th>plant</td>
+                    
+                <th>blanket</td>
+                    
+                <th>tv</td>
+                    
+                <th>computer tower</td>
+                    
+                <th>kitchen counter</td>
+                    
+                <th>refrigerator</td>
+                    
+                <th>jacket</td>
+                    
+                <th>electrical duct</td>
+                    
+                <th>sink</td>
+                    
+                <th>bag</td>
+                    
+                <th>picture</td>
+                    
+                <th>pillow</td>
+                    
+                <th>towel</td>
+                    
+                <th>suitcase</td>
+                    
+                <th>backpack</td>
+                    
+                <th>crate</td>
+                    
+                <th>keyboard</td>
+                    
+                <th>rack</td>
+                    
+                <th>toilet</td>
+                    
+                <th>paper</td>
+                    
+                <th>printer</td>
+                    
+                <th>poster</td>
+                    
+                <th>painting</td>
+                    
+                <th>microwave</td>
+                    
+                <th>board</td>
+                    
+                <th>shoes</td>
+                    
+                <th>socket</td>
+                    
+                <th>bottle</td>
+                    
+                <th>bucket</td>
+                    
+                <th>cushion</td>
+                    
+                <th>basket</td>
+                    
+                <th>shoe rack</td>
+                    
+                <th>telephone</td>
+                    
+                <th>file folder</td>
+                    
+                <th>cloth</td>
+                    
+                <th>blind rail</td>
+                    
+                <th>laptop</td>
+                    
+                <th>plant pot</td>
+                    
+                <th>exhaust fan</td>
+                    
+                <th>cup</td>
+                    
+                <th>coat hanger</td>
+                    
+                <th>light switch</td>
+                    
+                <th>speaker</td>
+                    
+                <th>table lamp</td>
+                    
+                <th>air vent</td>
+                    
+                <th>clothes hanger</td>
+                    
+                <th>kettle</td>
+                    
+                <th>smoke detector</td>
+                    
+                <th>container</td>
+                    
+                <th>power strip</td>
+                    
+                <th>slippers</td>
+                    
+                <th>paper bag</td>
+                    
+                <th>mouse</td>
+                    
+                <th>cutting board</td>
+                    
+                <th>toilet paper</td>
+                    
+                <th>paper towel</td>
+                    
+                <th>pot</td>
+                    
+                <th>clock</td>
+                    
+                <th>pan</td>
+                    
+                <th>tap</td>
+                    
+                <th>jar</td>
+                    
+                <th>soap dispenser</td>
+                    
+                <th>binder</td>
+                    
+                <th>bowl</td>
+                    
+                <th>tissue box</td>
+                    
+                <th>whiteboard eraser</td>
+                    
+                <th>toilet brush</td>
+                    
+                <th>spray bottle</td>
+                    
+                <th>headphones</td>
+                    
+                <th>stapler</td>
+                    
+                <th>marker</td>
+                    
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+            <tr>
+                <th scope="col" style="white-space: nowrap;"> TOP-1</th>
+                <td>0.39256</td>
+                
+                <td>0.81089</td>
+                
+                <td>0.89555</td>
+                
+                <td>0.93262</td>
+                
+                <td>0.73986</td>
+                
+                <td>0.62997</td>
+                
+                <td>0.90258</td>
+                
+                <td>0.32910</td>
+                
+                <td>0.87964</td>
+                
+                <td>0.76919</td>
+                
+                <td>0.68344</td>
+                
+                <td>0.41593</td>
+                
+                <td>0.80131</td>
+                
+                <td>0.52303</td>
+                
+                <td>0.74710</td>
+                
+                <td>0.51031</td>
+                
+                <td>0.37450</td>
+                
+                <td>0.33032</td>
+                
+                <td>0.87431</td>
+                
+                <td>0.24466</td>
+                
+                <td>0.37842</td>
+                
+                <td>0.72169</td>
+                
+                <td>0.75750</td>
+                
+                <td>0.53538</td>
+                
+                <td>0.81116</td>
+                
+                <td>0.64600</td>
+                
+                <td>0.64947</td>
+                
+                <td>0.06647</td>
+                
+                <td>0.57702</td>
+                
+                <td>0.16165</td>
+                
+                <td>0.86145</td>
+                
+                <td>0.52324</td>
+                
+                <td>0.94150</td>
+                
+                <td>0.48332</td>
+                
+                <td>0.16465</td>
+                
+                <td>0.54041</td>
+                
+                <td>0.64267</td>
+                
+                <td>0.32393</td>
+                
+                <td>0.63434</td>
+                
+                <td>0.13702</td>
+                
+                <td>0.18332</td>
+                
+                <td>0.27982</td>
+                
+                <td>0.46844</td>
+                
+                <td>0.40099</td>
+                
+                <td>0.47829</td>
+                
+                <td>0.14010</td>
+                
+                <td>0.73643</td>
+                
+                <td>0.01078</td>
+                
+                <td>0.86023</td>
+                
+                <td>0.12881</td>
+                
+                <td>0.23983</td>
+                
+                <td>0.12526</td>
+                
+                <td>0.02213</td>
+                
+                <td>0.78649</td>
+                
+                <td>0.07295</td>
+                
+                <td>0.35992</td>
+                
+                <td>0.20142</td>
+                
+                <td>0.33909</td>
+                
+                <td>0.16874</td>
+                
+                <td>0.09373</td>
+                
+                <td>0.02147</td>
+                
+                <td>0.29669</td>
+                
+                <td>0.63423</td>
+                
+                <td>0.01182</td>
+                
+                <td>0.00000</td>
+                
+                <td>0.54142</td>
+                
+                <td>0.13780</td>
+                
+                <td>0.33851</td>
+                
+                <td>0.57357</td>
+                
+                <td>0.38622</td>
+                
+                <td>0.03524</td>
+                
+                <td>0.44844</td>
+                
+                <td>0.15279</td>
+                
+                <td>0.44531</td>
+                
+                <td>0.00000</td>
+                
+                <td>0.05504</td>
+                
+                <td>0.40191</td>
+                
+                <td>0.41661</td>
+                
+                <td>0.00190</td>
+                
+                <td>0.18976</td>
+                
+                <td>0.19842</td>
+                
+                <td>0.20889</td>
+                
+                <td>0.70342</td>
+                
+                <td>0.09834</td>
+                
+                <td>0.19511</td>
+                
+                <td>0.21700</td>
+                
+                <td>0.00000</td>
+                
+                <td>0.62592</td>
+                
+                <td>0.19390</td>
+                
+                <td>0.51843</td>
+                
+                <td>0.05314</td>
+                
+                <td>0.62025</td>
+                
+                <td>0.00000</td>
+                
+                <td>0.12143</td>
+                
+                <td>0.15272</td>
+                
+                <td>0.31251</td>
+                
+                <td>0.57293</td>
+                
+                <td>0.01554</td>
+                
+                <td>0.24726</td>
+                
+                <td>0.04747</td>
+                
+                <td>0.01597</td>
+                
+            </tr>
+            
+            <tr>
+                <th scope="col" style="white-space: nowrap;"> TOP-3</th>
+                <td>0.62517</td>
+                
+                <td>0.94471</td>
+                
+                <td>0.98302</td>
+                
+                <td>0.98521</td>
+                
+                <td>0.87913</td>
+                
+                <td>0.89813</td>
+                
+                <td>0.95626</td>
+                
+                <td>0.55329</td>
+                
+                <td>0.98028</td>
+                
+                <td>0.95187</td>
+                
+                <td>0.88180</td>
+                
+                <td>0.63117</td>
+                
+                <td>0.96441</td>
+                
+                <td>0.70975</td>
+                
+                <td>0.93805</td>
+                
+                <td>0.86368</td>
+                
+                <td>0.58123</td>
+                
+                <td>0.80642</td>
+                
+                <td>0.93578</td>
+                
+                <td>0.38735</td>
+                
+                <td>0.89561</td>
+                
+                <td>0.95086</td>
+                
+                <td>0.89142</td>
+                
+                <td>0.75980</td>
+                
+                <td>0.93814</td>
+                
+                <td>0.87680</td>
+                
+                <td>0.91614</td>
+                
+                <td>0.63607</td>
+                
+                <td>0.80841</td>
+                
+                <td>0.65994</td>
+                
+                <td>0.93849</td>
+                
+                <td>0.81606</td>
+                
+                <td>0.97631</td>
+                
+                <td>0.72460</td>
+                
+                <td>0.40298</td>
+                
+                <td>0.78343</td>
+                
+                <td>0.74884</td>
+                
+                <td>0.83946</td>
+                
+                <td>0.82889</td>
+                
+                <td>0.43151</td>
+                
+                <td>0.59138</td>
+                
+                <td>0.71255</td>
+                
+                <td>0.66330</td>
+                
+                <td>0.57329</td>
+                
+                <td>0.73788</td>
+                
+                <td>0.38607</td>
+                
+                <td>0.89032</td>
+                
+                <td>0.08029</td>
+                
+                <td>0.96197</td>
+                
+                <td>0.46744</td>
+                
+                <td>0.48692</td>
+                
+                <td>0.41598</td>
+                
+                <td>0.27699</td>
+                
+                <td>0.84136</td>
+                
+                <td>0.12910</td>
+                
+                <td>0.83459</td>
+                
+                <td>0.67346</td>
+                
+                <td>0.53773</td>
+                
+                <td>0.62868</td>
+                
+                <td>0.64137</td>
+                
+                <td>0.11119</td>
+                
+                <td>0.96280</td>
+                
+                <td>0.86112</td>
+                
+                <td>0.22307</td>
+                
+                <td>0.04665</td>
+                
+                <td>0.95023</td>
+                
+                <td>0.48403</td>
+                
+                <td>0.66144</td>
+                
+                <td>0.88884</td>
+                
+                <td>0.51795</td>
+                
+                <td>0.32612</td>
+                
+                <td>0.86472</td>
+                
+                <td>0.52591</td>
+                
+                <td>0.60265</td>
+                
+                <td>0.02793</td>
+                
+                <td>0.07302</td>
+                
+                <td>0.65116</td>
+                
+                <td>0.72429</td>
+                
+                <td>0.01553</td>
+                
+                <td>0.45104</td>
+                
+                <td>0.61008</td>
+                
+                <td>0.55201</td>
+                
+                <td>0.92753</td>
+                
+                <td>0.52860</td>
+                
+                <td>0.24806</td>
+                
+                <td>0.28578</td>
+                
+                <td>0.00000</td>
+                
+                <td>0.74363</td>
+                
+                <td>0.33868</td>
+                
+                <td>0.77163</td>
+                
+                <td>0.18564</td>
+                
+                <td>0.87073</td>
+                
+                <td>0.00000</td>
+                
+                <td>0.25799</td>
+                
+                <td>0.33362</td>
+                
+                <td>0.61627</td>
+                
+                <td>0.70018</td>
+                
+                <td>0.18150</td>
+                
+                <td>0.43713</td>
+                
+                <td>0.08816</td>
+                
+                <td>0.68450</td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+</div>
+
+</div>
+
+
+
+    </div>
+</body>
+
+</html>
